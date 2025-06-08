@@ -6,13 +6,14 @@ function ShopMain() {
             <div className={style.header}>
                 <h2>Testing</h2>
             </div>
+            <div className={style.nav}></div>
             <div className={style.main}>
                 <div className={style.mainTop}>
                     <div className={style.mainImg}>
                         <ul>
-                            <li><a href="#"><img src="/images/Mytrapcard.png" alt="Mytrapcard" /></a></li>
-                            <li><a href="#"><img src="/images/ChileMan.png" alt="ChileMan" /></a></li>
-                            <li><a href="#"><img src="/images/Backjongwon.png" alt="Backjongwon" /></a></li>
+                            <li><a href="#"><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></a></li>
+                            <li><a href="#"><img src="/images/ChileMan.jpg" alt="ChileMan" /></a></li>
+                            <li><a href="#"><img src="/images/Backjongwon.jpg" alt="Backjongwon" /></a></li>
                         </ul>
                     </div>
                 </div>
@@ -25,11 +26,51 @@ function ShopMain() {
                     </div>
                     <div className={style.menuList}>
                         <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>
+                                <a href="#">
+                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
+                                    <div className={style.menuSub}>
+                                        <h2>My Trap Card</h2>
+                                        <p><span>20%</span> | 25,000원</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
+                                    <div className={style.menuSub}>
+                                        <h2>My Trap Card</h2>
+                                        <p><span>20%</span> | 25,000원</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
+                                    <div className={style.menuSub}>
+                                        <h2>My Trap Card</h2>
+                                        <p><span>20%</span> | 25,000원</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
+                                    <div className={style.menuSub}>
+                                        <h2>My Trap Card</h2>
+                                        <p><span>20%</span> | 25,000원</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
+                                    <div className={style.menuSub}>
+                                        <h2>My Trap Card</h2>
+                                        <p><span>20%</span> | 25,000원</p>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                         <ul>
                             <li></li>
