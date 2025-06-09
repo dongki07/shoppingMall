@@ -6,7 +6,11 @@ function ShopMain() {
             <div className={style.header}>
                 <h2>Testing</h2>
             </div>
-            <div className={style.nav}></div>
+            <div className={style.nav}>
+                <div className={style.search}>
+                    <input type="text" placeholder="검색어를 입력하세요"/>
+                </div>
+            </div>
             <div className={style.main}>
                 <div className={style.mainTop}>
                     <div className={style.mainImg}>
