@@ -1,39 +1,58 @@
 import style from "../styles/ShopMain.module.css";
+import { useNavigate, Link } from "react-router-dom";
 
 function ShopMain() {
+    const navigate = useNavigate();
+
     return(
         <div>
             <div className={style.header}>
-                <h2>Testing</h2>
+                <div className={style.logo}>
+                    <h2>Testing</h2>
+                </div>
+                <div className={style.headerMenu}>
+                </div>
             </div>
             <div className={style.nav}>
                 <div className={style.search}>
                     <input type="text" placeholder="검색어를 입력하세요"/>
+                    <div className={style.searchIcon}>
+                        <img src="/images/Searchicon.png" alt="search" />
+                    </div>
+                </div>
+                <div className={style.menuList}>
+                    <ul>
+                        <li><Link to={`/menu/1`}>메뉴1</Link></li>
+                        <li><Link to={`/menu/2`}>메뉴2</Link></li>
+                        <li><Link to={`/menu/3`}>메뉴3</Link></li>
+                        <li><Link to={`/menu/4`}>메뉴4</Link></li>
+                        <li><Link to={`/menu/5`}>메뉴5</Link></li>
+                    </ul>
                 </div>
             </div>
             <div className={style.main}>
                 <div className={style.mainTop}>
                     <div className={style.mainImg}>
                         <ul>
-                            <li><a href="#"><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></a></li>
-                            <li><a href="#"><img src="/images/ChileMan.jpg" alt="ChileMan" /></a></li>
-                            <li><a href="#"><img src="/images/Backjongwon.jpg" alt="Backjongwon" /></a></li>
+                            <li><a href="#"><img src="/images/Mytrapcard.png" alt="Mytrapcard" /></a></li>
+                            <li><a href="#"><img src="/images/ChileMan.png" alt="ChileMan" /></a></li>
+                            <li><a href="#"><img src="/images/Backjongwon.png" alt="Backjongwon" /></a></li>
                         </ul>
                     </div>
                 </div>
-                <div className={style.menu}>
-                    <div className={style.menuTitle}>
+                <div className={style.shopmenu}>
+                    <div className={style.shopmenuTitle}>
                         <ul>
                             <li><h2>상품 메뉴</h2></li>
-                            <li><a href="#">더보기+</a></li>
+                            <li><Link to={`/menu/1`}>더보기+</Link></li>
                         </ul>
                     </div>
-                    <div className={style.menuList}>
+                    <div className={style.shopmenuList}>
                         <ul>
                             <li>
                                 <a href="#">
-                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
-                                    <div className={style.menuSub}>
+                                    <div className={style.shopmenuImg}><img src="/images/Mytrapcard.png" alt="Mytrapcard" /></div>
+                                    <div className={style.shopmenuSub}>
                                         <h2>My Trap Card</h2>
                                         <p><span>20%</span> | 25,000원</p>
                                     </div>
@@ -41,8 +60,8 @@ function ShopMain() {
                             </li>
                             <li>
                                 <a href="#">
-                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
-                                    <div className={style.menuSub}>
+                                    <div className={style.shopmenuImg}><img src="/images/Mytrapcard.png" alt="Mytrapcard" /></div>
+                                    <div className={style.shopmenuSub}>
                                         <h2>My Trap Card</h2>
                                         <p><span>20%</span> | 25,000원</p>
                                     </div>
@@ -50,8 +69,8 @@ function ShopMain() {
                             </li>
                             <li>
                                 <a href="#">
-                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
-                                    <div className={style.menuSub}>
+                                    <div className={style.shopmenuImg}><img src="/images/Mytrapcard.png" alt="Mytrapcard" /></div>
+                                    <div className={style.shopmenuSub}>
                                         <h2>My Trap Card</h2>
                                         <p><span>20%</span> | 25,000원</p>
                                     </div>
@@ -59,8 +78,8 @@ function ShopMain() {
                             </li>
                             <li>
                                 <a href="#">
-                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
-                                    <div className={style.menuSub}>
+                                    <div className={style.shopmenuImg}><img src="/images/Mytrapcard.png" alt="Mytrapcard" /></div>
+                                    <div className={style.shopmenuSub}>
                                         <h2>My Trap Card</h2>
                                         <p><span>20%</span> | 25,000원</p>
                                     </div>
@@ -68,8 +87,8 @@ function ShopMain() {
                             </li>
                             <li>
                                 <a href="#">
-                                    <div className={style.menuImg}><img src="/images/Mytrapcard.jpg" alt="Mytrapcard" /></div>
-                                    <div className={style.menuSub}>
+                                    <div className={style.shopmenuImg}><img src="/images/Mytrapcard.png" alt="Mytrapcard" /></div>
+                                    <div className={style.shopmenuSub}>
                                         <h2>My Trap Card</h2>
                                         <p><span>20%</span> | 25,000원</p>
                                     </div>

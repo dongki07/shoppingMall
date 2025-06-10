@@ -35,34 +35,7 @@ a{
 }
 .nav{
     width:100%;
-    height:200px;
-    background-color: rgb(116, 116, 116);
-}
-.search{
-    width:100%;
-    height:150px;
-    padding:0 calc(50% - 250px);
-    margin:0 auto;
-}
-.search input{
-    width:450px;
-    height:40px;
-    margin:55px 0;
-    font-size:20px;
-    float:left;
-}
-.searchIcon{
-    width:50px;
-    height:40px;
-    margin:55px 0;
-    background-color: rgb(172, 172, 172);
-    float:left;
-    text-align:center;
-    cursor:pointer;
-}
-.searchIcon img{
-    width:40px;
-    height:40px;
+    height:50px;
 }
 .menuList{
     width:100%;
@@ -95,32 +68,28 @@ a{
 }
 .main{
     width:100%;
-    height:1200px;
 }
-.mainTop{
-    width:100%;
-    height:400px;
-    padding:50px 0;
+.basket{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    cursor:pointer;
+    right:50px;
+    bottom:50px;
+    background-color: rgb(162, 162, 162);
+    position: fixed;
 }
-.mainImg{
-    width:100%;
-    height:300px;
-    background-color: rgb(116, 116, 116);
+.basket img{
+    width:60px;
+    height:60px;
+    margin:20px;
+    text-align:center;
 }
-.mainImg ul{
-    display:flex;
-    justify-content:space-around;
-}
-.mainImg li, .mainImg img{
-    width:500px;
-    height:300px;
-}
-.mainImg a:hover{
+.basket:hover{
     opacity:0.5;
 }
 .shopmenu{
     width:100%;
-    height:800px;
 }
 .shopmenuTitle{
     width:90%;
@@ -147,7 +116,6 @@ a{
 }
 .shopmenuList{
     width:90%;
-    height:750px;
     margin:0 5vw;
 }
 .shopmenuList ul{
@@ -160,7 +128,7 @@ a{
 .shopmenuList li{
     width:300px;
     height:300px;
-    background-color: rgb(99, 169, 91);
+    /* background-color: rgb(99, 169, 91); */
 }
 .shopmenuList a:hover{
     opacity:0.5;
