@@ -4,48 +4,48 @@ import { useState, useEffect } from "react";
 
 function ShopMenu() {
     const {id} = useParams();
-    const [imgUrl, setImgUrl] = useState("");
-    const [title, setTitle] = useState("");
-    const [cost, setCost] = useState("");
-
-    useEffect(() => {
-        let target = "";
-        let titleTarget = "";
-        let costTarget = "";
-        switch(id) {
-            case "1":
-                target = "Mytrapcard";
-                titleTarget = "My Trap Card";
-                costTarget = 125000;
-                break;
-            
-            case "2":
-                target = "ChileMan";
-                titleTarget = "Chile Man";
-                costTarget = 65000;
-                break;
-
-            case "3":
-                target = "Ggazzizzu";
-                titleTarget = "GgaZziZzu";
-                costTarget = 25000;
-                break;
-
-            case "4":
-                target = "Backjongwon";
-                titleTarget = "JongWon-Back";
-                costTarget = 17500;
-                break;
-            
-            default:
-                target = "None";
-                titleTarget = "None";
-                costTarget = 0;
-                break;
+    const [shopData, setShopData] = useState([
+        {
+            "id": 1,
+            "title": "My Trap Card",
+            "cost": 125000,
+            "sale": 10,
+            "url": "Mytrapcard",
+            "ext": ".png"
+        }, {
+            "id": 2,
+            "title": "Chile Man",
+            "cost": 65000,
+            "sale": 15,
+            "url": "ChileMan",
+            "ext": ".png"
+        }, {
+            "id": 3,
+            "title": "GgaZziZzu",
+            "cost": 25000,
+            "sale": 10,
+            "url": "Ggazzizzu",
+            "ext": ".png"
+        }, {
+            "id": 4,
+            "title": "JongWon-Back",
+            "cost": 17500,
+            "sale": 5,
+            "url": "Backjongwon",
+            "ext": ".png"
+        }, {
+            "id": 5,
+            "title": "Chile Man",
+            "cost": 65000,
+            "sale": 15,
+            "url": "ChileMan",
+            "ext": ".png"
         }
-        setImgUrl(target);
-        setTitle(titleTarget);
-        setCost(costTarget);
+    ]);
+
+    const targetData = shopData.find(data => data.id == id);
+    useEffect(() => {
+        console.log("id가 변경됐다");
     }, [id]);
 
     return(
@@ -78,53 +78,53 @@ function ShopMenu() {
                 <div className={style.shopmenu}>
                     <div className={style.shopmenuTitle}>
                         <ul>
-                            <li><h2>상품 메뉴 {id}</h2></li>
+                            <li><h2>상품 메뉴 {targetData.id}</h2></li>
                         </ul>
                     </div>
                     <div className={style.shopmenuList}>
                         <ul>
                             <li>
-                                <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${imgUrl}.png`} alt={imgUrl} /></div>
+                                <Link to="/menu/info">
+                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
                                     <div className={style.shopmenuSub}>
-                                        <h2>{title}</h2>
-                                        <p><span>20%</span> | {cost}원</p>
+                                        <h2>{targetData.title}</h2>
+                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
+                                    </div>
+                                </Link>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
+                                    <div className={style.shopmenuSub}>
+                                        <h2>{targetData.title}</h2>
+                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${imgUrl}.png`} alt={imgUrl} /></div>
+                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
                                     <div className={style.shopmenuSub}>
-                                        <h2>{title}</h2>
-                                        <p><span>20%</span> | {cost}원</p>
+                                        <h2>{targetData.title}</h2>
+                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${imgUrl}.png`} alt={imgUrl} /></div>
+                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
                                     <div className={style.shopmenuSub}>
-                                        <h2>{title}</h2>
-                                        <p><span>20%</span> | {cost}원</p>
+                                        <h2>{targetData.title}</h2>
+                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${imgUrl}.png`} alt={imgUrl} /></div>
+                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
                                     <div className={style.shopmenuSub}>
-                                        <h2>{title}</h2>
-                                        <p><span>20%</span> | {cost}원</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${imgUrl}.png`} alt={imgUrl} /></div>
-                                    <div className={style.shopmenuSub}>
-                                        <h2>{title}</h2>
-                                        <p><span>20%</span> | {cost}원</p>
+                                        <h2>{targetData.title}</h2>
+                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
                                     </div>
                                 </a>
                             </li>

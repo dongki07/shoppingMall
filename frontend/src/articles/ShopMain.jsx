@@ -1,5 +1,5 @@
 import style from "../styles/ShopMain.module.css";
-import { useNavigate, Link } from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 function ShopMain() {
     const navigate = useNavigate();
