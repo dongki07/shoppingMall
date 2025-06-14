@@ -94,23 +94,50 @@ a{
     padding:0 20px;
     background-color: rgb(75, 173, 62);
 }
-.infoSet h2{
+.setTitle{
     width:100%;
     height:50px;
+    text-align:center;
+}
+.setTitle h2{
     line-height:50px;
     font-size:32px;
 }
-.infoSet p{
+.setSubTitle{
+    width:100%;
+    height:200px;
+    font-size:20px;
+}
+.setInput{
     width:100%;
     height:50px;
-    font-size:24px;
+    padding:5px 0;
 }
-.infoSet span{
+.setInput ul{
+    display:flex;
+    justify-content:space-between;
+}
+.setInput p{
+    width:250px;
+    height:40px;
+    line-height:40px;
+    font-size:24px;
+    text-align:center;
+}
+.setInput span{
     color:red;
 }
-.infoSet button{
-    width:200px;
+.setInput input{
+    width:100px;
     height:40px;
+    font-size:18px;
+    vertical-align: middle;
+}
+.setInput button{
+    width:100px;
+    height:40px;
+    font-size:20px;
+    vertical-align: middle;
 }
 .footer{
     width:100%;
