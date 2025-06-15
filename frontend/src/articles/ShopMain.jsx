@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import style from "../styles/ShopMain.module.css";
-import {useNavigate, Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { DataContext } from "./DataContext";
 
 function ShopMain() {
-    const navigate = useNavigate();
-
+    const value = useContext(DataContext).shopData;
+    console.log(value[0]);
     return(
         <div>
             <div className={style.header}>

@@ -1,13 +1,29 @@
-import { Link } from "react-router-dom";
 import style from "../styles/ShopInfo.module.css";
-import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { DataContext } from "./DataContext";
 
 function ShopInfo() {
-    const [cost, setCost] = useState(12000);
-
+    const shopData = useContext(DataContext).shopData;
+    const { id } = useParams();
+    
+    const targetData = shopData.find(data => data.id == id);
+    const [qua, setQua] = useState(1);
     const handleChange = (e) => {
-        const target = e.target.value;
-        setCost(target > 0 && target != "" ? target * 12000 : 12000);
+        let quantity = e.target.value;
+        const minValue = 0;
+        const maxValue = 1000;
+
+        if(quantity == "" || quantity <= minValue){
+            quantity = 1;
+        }else{
+            if(quantity > maxValue){
+                quantity = maxValue;
+                e.target.value = 1000;
+            }
+            console.log("정상 작동");
+        }
+        setQua(quantity);
     }
 
     return(
@@ -34,24 +50,26 @@ function ShopInfo() {
                 </div>
             </div>
             <div className={style.main}>
+                <div className={style.basket}>
+                    <Link to="/basket"><img src="/images/Basketicon.png" alt="basket" /></Link>
+                </div>
                 <div className={style.mainInfo}>
                     <div className={style.infoImg}>
-                        <a href="#"><img src="/images/ChileMan.png" alt="ChileMan"></img></a>
+                        <a href="#"><img src={`/images/${targetData.url}${targetData.ext}`} alt="ChileMan"></img></a>
                     </div>
                     <div className={style.infoSet}>
                         <div className={style.setTitle}>
-                            <h2>ChileMan</h2>
+                            <h2>{targetData.title}</h2>
                         </div>
                         <div className={style.setSubTitle}>
-                            <p>한 칠레인이 일본에 놀러와 일본 택시를 보고 <br/>
-                            너무 감동적인 나머지 상상도 못한 포즈를 취한 장면</p>
+                            <p>{targetData.subTitle}</p>
                         </div>
                         <div className={style.setInput}>
                             <ul>
-                                <li><p><span>10%</span> | {cost}원</p></li>
+                                <li><p><span>{targetData.sale}%</span> | {targetData.cost * qua}원</p></li>
                                 <li><div className={style.inputBuy}>
-                                <input type="number" placeholder="수량" name="cost" onChange={handleChange} />
-                                <button type="button" onClick={() => console.log(cost)}>구매?</button></div></li>
+                                <input type="number" placeholder="수량" name="quantity" onChange={handleChange} />
+                                <button type="button" onClick={() => console.log(targetData, qua)}>담기</button></div></li>
                             </ul>
                         </div>
                     </div>

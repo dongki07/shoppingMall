@@ -3,7 +3,7 @@ import '../styles/AppLogo.css';
 
 function AppLogo() {
   return (
-    <div className="App">
+    <div className="App"> 
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Edit <code>src/AppLogo.js</code> and save to reload.</p>

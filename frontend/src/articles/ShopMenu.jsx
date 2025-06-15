@@ -2,9 +2,7 @@ import style from "../styles/ShopMenu.module.css";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function ShopMenu() {
-    const {id} = useParams();
-    const [shopData, setShopData] = useState([
+const shopData = [
         {
             "id": 1,
             "title": "My Trap Card",
@@ -41,7 +39,9 @@ function ShopMenu() {
             "url": "ChileMan",
             "ext": ".png"
         }
-    ]);
+    ];
+function ShopMenu() {
+    const {id} = useParams();
 
     const targetData = shopData.find(data => data.id == id);
     useEffect(() => {
@@ -73,7 +73,7 @@ function ShopMenu() {
             </div>
             <div className={style.main}>
                 <div className={style.basket}>
-                    <img src="/images/Basketicon.png" alt="basket" />
+                    <Link to="/basket"><img src="/images/Basketicon.png" alt="basket" /></Link>
                 </div>
                 <div className={style.shopmenu}>
                     <div className={style.shopmenuTitle}>
@@ -84,7 +84,7 @@ function ShopMenu() {
                     <div className={style.shopmenuList}>
                         <ul>
                             <li>
-                                <Link to="/menu/info">
+                                <Link to={`/info/${targetData.id}`}>
                                     <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
                                     <div className={style.shopmenuSub}>
                                         <h2>{targetData.title}</h2>

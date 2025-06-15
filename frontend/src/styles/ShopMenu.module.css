@@ -90,22 +90,22 @@ a{
 }
 .shopmenu{
     width:100%;
+    padding:0 5vw;
 }
 .shopmenuTitle{
-    width:90%;
+    width:100%;
     height:50px;
-    margin:0 5vw;
     border-bottom:1px solid black;
+}
+.shopmenuTitle h2{
+    line-height:50px;
+    font-size:32px;
 }
 .shopmenuTitle ul{
     width:230px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-}
-.shopmenuTitle h2{
-    font-size:32px;
-    height:50px;
 }
 .shopmenuTitle a{
     font-size:20px;
@@ -115,8 +115,7 @@ a{
     font-weight:bold;
 }
 .shopmenuList{
-    width:90%;
-    margin:0 5vw;
+    width:100%;
 }
 .shopmenuList ul{
     width:100%;
