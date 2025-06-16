@@ -1,48 +1,11 @@
 import style from "../styles/ShopMenu.module.css";
 import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { DataContext } from "./DataContext";
 
-const shopData = [
-        {
-            "id": 1,
-            "title": "My Trap Card",
-            "cost": 125000,
-            "sale": 10,
-            "url": "Mytrapcard",
-            "ext": ".png"
-        }, {
-            "id": 2,
-            "title": "Chile Man",
-            "cost": 65000,
-            "sale": 15,
-            "url": "ChileMan",
-            "ext": ".png"
-        }, {
-            "id": 3,
-            "title": "GgaZziZzu",
-            "cost": 25000,
-            "sale": 10,
-            "url": "Ggazzizzu",
-            "ext": ".png"
-        }, {
-            "id": 4,
-            "title": "JongWon-Back",
-            "cost": 17500,
-            "sale": 5,
-            "url": "Backjongwon",
-            "ext": ".png"
-        }, {
-            "id": 5,
-            "title": "Chile Man",
-            "cost": 65000,
-            "sale": 15,
-            "url": "ChileMan",
-            "ext": ".png"
-        }
-    ];
 function ShopMenu() {
     const {id} = useParams();
-
+    const { shopData } = useContext(DataContext);
     const targetData = shopData.find(data => data.id == id);
     useEffect(() => {
         console.log("id가 변경됐다");

@@ -4,8 +4,8 @@ import { useContext, useState } from "react";
 import { DataContext } from "./DataContext";
 
 function ShopInfo() {
-    const shopData = useContext(DataContext).shopData;
     const { id } = useParams();
+    const { shopData, addBasket } = useContext(DataContext);
     
     const targetData = shopData.find(data => data.id == id);
     const [qua, setQua] = useState(1);
@@ -23,7 +23,7 @@ function ShopInfo() {
             }
             console.log("정상 작동");
         }
-        setQua(quantity);
+        setQua(Number(quantity));
     }
 
     return(
@@ -69,7 +69,7 @@ function ShopInfo() {
                                 <li><p><span>{targetData.sale}%</span> | {targetData.cost * qua}원</p></li>
                                 <li><div className={style.inputBuy}>
                                 <input type="number" placeholder="수량" name="quantity" onChange={handleChange} />
-                                <button type="button" onClick={() => console.log(targetData, qua)}>담기</button></div></li>
+                                <button type="button" onClick={() => addBasket(targetData.id, qua)}>담기</button></div></li>
                             </ul>
                         </div>
                     </div>

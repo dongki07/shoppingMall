@@ -14,7 +14,7 @@ export default function DataProvider({children}){
         }, {
             "id": 2,
             "title": "Chile Man",
-            "subTitle": "한 칠레인이 일본에 놀러와 일본 택시를 보고 너무 감동적인 나머지 상상도 못한 포즈를 취한 분",
+            "subTitle": "중국이 두려워하고 일본이 놀라며 칠레가 감격해하는 제품 및 솔루션",
             "cost": 65000,
             "sale": 15,
             "url": "ChileMan",
@@ -37,17 +37,30 @@ export default function DataProvider({children}){
             "ext": ".png"
         }, {
             "id": 5,
-            "title": "Chile Man",
-            "subTitle": "한 칠레인이 일본에 놀러와 일본 택시를 보고 너무 감동적인 나머지 상상도 못한 포즈를 취한 분",
-            "cost": 65000,
-            "sale": 15,
-            "url": "ChileMan",
-            "ext": ".png"
+            "title": "SoWhat",
+            "subTitle": "그저 그런 새 한 마리",
+            "cost": 25000,
+            "sale": 10,
+            "url": "SoWhat",
+            "ext": ".jpg"
         }
     ]);
 
+    const [basket, setBasket] = useState([]);
+
+    const addBasket = (id, qua) => {
+        const newBasket = {"id": id, "qua": qua};
+        const exist = basket.some(data => data.id == id);
+        if(!exist){
+            setBasket(data => [...data, newBasket]);
+        }else{
+            setBasket(data => data.map(data => data.id == id ? {...data, "qua": data.qua + qua} : data));
+        }
+        alert("상품이 장바구니에 담겨졌습니다");
+    }
+
     return(
-        <DataContext.Provider value={{shopData}}>
+        <DataContext.Provider value={{shopData, basket, addBasket}}>
             {children}
         </DataContext.Provider>
     );

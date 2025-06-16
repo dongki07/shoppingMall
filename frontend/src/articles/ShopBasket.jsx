@@ -1,12 +1,14 @@
 import style from "../styles/ShopBasket.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DataContext } from "./DataContext";
 
 function ShopBasket() {
+    const { shopData, basket, addBasket } = useContext(DataContext);
     const [qua, setQua] = useState(1);
-    const [quaValue, setQuaValue] = useState(0);
 
     const handleChange = (e) => {
+        console.log(basket);
         let quantity  = e.target.value;
         const minValue = 0;
         const maxValue = 1000;
@@ -20,18 +22,12 @@ function ShopBasket() {
             }
             console.log("정상 작동");
         }
-
-        setQuaValue(quantity);
+        setQua(Number(quantity));
     }
 
-    const setQuantity = (e) => {
-        let target = Number(quaValue * e);
-        if(qua + target > 1000){
-            target = 1000;
-        }else{
-            target += qua;
-        }
-        setQua(target);
+    const setQuantity = (id, e) => {
+        const target = qua * e;
+        addBasket(id, target);
     }
 
     return(
@@ -65,33 +61,38 @@ function ShopBasket() {
                     <div className={style.mainList}>
                         <ul>
                             {/* 장바구니 목록  */}
-                            <li>
-                                <div className={style.listImg}>
-                                    <a href="#"><img src="/images/ChileMan.png" alt="img" /></a>
-                                </div>
-                                <div className={style.listTitle}>
-                                    <h2>ChileMan</h2>
-                                    <ul>
-                                        <li><span>10%</span></li>
-                                        <li>|</li>
-                                        <li>12000원</li>
-                                        <li>|</li>
-                                        <li>수량: {qua}</li>
-                                    </ul>
-                                </div>
-                                <div className={style.listqua}>
-                                    <div className={style.setqua}>
-                                        <input type="number" placeholder="수량" onChange={handleChange}/>
-                                    </div>
-                                    <div className={style.setinde}>
-                                        <input type="button" className={style.inc} value="추가" onClick={() => setQuantity(1)}/>
-                                        <input type="button" className={style.dec} value="삭제" onClick={() => setQuantity(-1)}/>
-                                    </div>
-                                </div>
-                                <div className={style.listClose}>
-                                    <a href="#">X</a>
-                                </div>
-                            </li>
+                            {basket.map(basket => {
+                                const data = shopData.find(shop => shop.id == basket.id);
+                                return(
+                                    <li key={basket.id}>
+                                        <div className={style.listImg}>
+                                            <a href="#"><img src={`/images/${data.url}${data.ext}`} alt={`${data.url}`} /></a>
+                                        </div>
+                                        <div className={style.listTitle}>
+                                            <h2>{data.title}</h2>
+                                            <ul>
+                                                <li><span>{data.sale}%</span></li>
+                                                <li>|</li>
+                                                <li>{data.cost}원</li>
+                                                <li>|</li>
+                                                <li>수량: {basket.qua}</li>
+                                            </ul>
+                                        </div>
+                                        <div className={style.listqua}>
+                                            <div className={style.setqua}>
+                                                <input type="number" placeholder="수량" onChange={handleChange}/>
+                                            </div>
+                                            <div className={style.setinde}>
+                                                <input type="button" className={style.inc} value="추가" onClick={() => setQuantity(basket.id, 1)}/>
+                                                <input type="button" className={style.dec} value="삭제" onClick={() => setQuantity(basket.id, -1)}/>
+                                            </div>
+                                        </div>
+                                        <div className={style.listClose}>
+                                            <a href="#">X</a>
+                                        </div>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 </div>
