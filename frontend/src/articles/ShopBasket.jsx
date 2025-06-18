@@ -1,11 +1,14 @@
 import style from "../styles/ShopBasket.module.css";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import React, { useContext, useState, useRef, use, useEffect } from "react";
 import { DataContext } from "./DataContext";
 
 function ShopBasket() {
-    const { shopData, basket, addBasket } = useContext(DataContext);
+    const { shopData, basket, addBasket, deleteBasket } = useContext(DataContext);
     const [qua, setQua] = useState(1);
+    const [sum, setSum] = useState(0);
+
+    const closeBtnRef = useRef({});
 
     const handleChange = (e) => {
         console.log(basket);
@@ -15,6 +18,7 @@ function ShopBasket() {
 
         if(quantity == "" || quantity <= minValue){
             quantity = 0;
+            e.target.value = "";
         }else{
             if(quantity > maxValue){
                 quantity = maxValue;
@@ -25,9 +29,27 @@ function ShopBasket() {
         setQua(Number(quantity));
     }
 
-    const setQuantity = (id, e) => {
+    const updateQua = (id, e) => {
         const target = qua * e;
-        addBasket(id, target);
+        const targetQua = basket.find(data => data.id == id).qua;
+        if(targetQua + target > 0){
+            addBasket(id, target);
+        }else{
+            closeBtnRef.current[id].current.click();
+        }
+    }
+    
+    useEffect(() => {
+        updateSum();
+    }, [basket]);
+
+    const updateSum = () => {
+        let allSum = 0;
+        basket.map(basket => {
+            const target = shopData.find(shop => shop.id == basket.id);
+            allSum += target.cost * basket.qua;
+        });
+        setSum(allSum);
     }
 
     return(
@@ -63,6 +85,11 @@ function ShopBasket() {
                             {/* 장바구니 목록  */}
                             {basket.map(basket => {
                                 const data = shopData.find(shop => shop.id == basket.id);
+
+                                if(!closeBtnRef.current[basket.id]){
+                                    closeBtnRef.current[basket.id] = React.createRef();
+                                }
+
                                 return(
                                     <li key={basket.id}>
                                         <div className={style.listImg}>
@@ -83,11 +110,11 @@ function ShopBasket() {
                                                 <input type="number" placeholder="수량" onChange={handleChange}/>
                                             </div>
                                             <div className={style.setinde}>
-                                                <input type="button" className={style.inc} value="추가" onClick={() => setQuantity(basket.id, 1)}/>
-                                                <input type="button" className={style.dec} value="삭제" onClick={() => setQuantity(basket.id, -1)}/>
+                                                <input type="button" className={style.inc} value="추가" onClick={() => updateQua(basket.id, 1)}/>
+                                                <input type="button" className={style.dec} value="삭제" onClick={() => updateQua(basket.id, -1)}/>
                                             </div>
                                         </div>
-                                        <div className={style.listClose}>
+                                        <div ref={closeBtnRef.current[basket.id]} className={style.listClose} onClick={() => deleteBasket(`${basket.id}`)}>
                                             <a href="#">X</a>
                                         </div>
                                     </li>
@@ -95,6 +122,12 @@ function ShopBasket() {
                             })}
                         </ul>
                     </div>
+                    {basket.length > 0 && <div className={style.mainResult}>
+                        <ul>
+                            <li><h2>총 금액: {sum}원</h2></li>
+                            <li><input type="button" value="결제하기" /></li>
+                        </ul>
+                    </div>}
                 </div>
             </div>
             <div className={style.footer}></div>

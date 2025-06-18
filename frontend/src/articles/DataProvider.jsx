@@ -30,7 +30,7 @@ export default function DataProvider({children}){
         }, {
             "id": 4,
             "title": "JongWon-Back",
-            "subTitle": "생전 처음 먹어 본 음식의 평가: 이, 이 맛은?",
+            "subTitle": "생전 처음 먹어 본 음식의 평가 중 대사",
             "cost": 17500,
             "sale": 5,
             "url": "Backjongwon",
@@ -51,16 +51,25 @@ export default function DataProvider({children}){
     const addBasket = (id, qua) => {
         const newBasket = {"id": id, "qua": qua};
         const exist = basket.some(data => data.id == id);
+        let target;
         if(!exist){
-            setBasket(data => [...data, newBasket]);
+            target = data => [...data, newBasket];
+            alert("데이터 전송 됨");
         }else{
-            setBasket(data => data.map(data => data.id == id ? {...data, "qua": data.qua + qua} : data));
+            target = data => data.map(data => data.id == id ? {...data, "qua": data.qua + qua} : data);
         }
-        alert("상품이 장바구니에 담겨졌습니다");
+        setBasket(target);
+    }
+
+    const deleteBasket = (id) => {
+        console.log(id);
+        setBasket(data => {
+            return data.filter(data => data.id != id);
+        });
     }
 
     return(
-        <DataContext.Provider value={{shopData, basket, addBasket}}>
+        <DataContext.Provider value={{shopData, basket, addBasket, deleteBasket}}>
             {children}
         </DataContext.Provider>
     );
