@@ -68,95 +68,44 @@ a{
 }
 .main{
     width:100%;
-    height:1200px;
+    height:850px;
+    padding-top:100px;
 }
-.basket{
-    width:100px;
-    height:100px;
+.mainImg{
+    width:300px;
+    height:300px;
+    background-color: rgb(97, 182, 71);
     border-radius:50%;
-    cursor:pointer;
-    right:50px;
-    bottom:50px;
-    background-color: rgb(162, 162, 162);
-    position: fixed;
-}
-.basket img{
-    width:60px;
-    height:60px;
-    margin:20px;
+    margin:0 auto;
     text-align:center;
 }
-.basket:hover{
-    opacity:0.5;
-}
-.mainInfo{
+.mainImg i{
     width:100%;
-    height:400px;
-    /* background-color: rgb(116, 116, 116); */
-    border-top:5px solid black;
-    border-bottom:5px solid black;
-    margin-top:100px;
-    padding:40px 0;
-    display:flex;
-    justify-content:center;
+    height:250px;
+    margin:25px 0;
+    font-size:250px;
+    color:white;
 }
-.infoImg{
-    width:500px;
-    height:300px;
-    background-color: rgb(155, 212, 147);
-}
-.infoImg img{
-    width:500px;
-    height:300px;
-}
-.infoSet{
-    width:500px;
-    height:300px;
-    padding:0 20px;
-}
-.setTitle{
+.mainTitle{
     width:100%;
-    height:50px;
+    height:100px;
+    margin:0 auto;
 }
-.setTitle h2{
+.mainTitle h2{
     line-height:50px;
     font-size:32px;
+    text-align:center;
 }
-.setSubTitle{
-    width:100%;
-    height:200px;
-    font-size:20px;
-}
-.setInput{
-    width:100%;
-    height:50px;
-    padding:5px 0;
-}
-.setInput ul{
-    display:flex;
-    justify-content:space-between;
-}
-.setInput p{
-    width:250px;
-    height:40px;
-    line-height:40px;
+.mainTitle p{
+    line-height:50px;
     font-size:24px;
     text-align:center;
 }
-.setInput span{
-    color:red;
+.mainTitle a{
+    color:black;
 }
-.setInput input{
-    width:100px;
-    height:40px;
-    font-size:18px;
-    vertical-align: middle;
-}
-.setInput button{
-    width:100px;
-    height:40px;
-    font-size:20px;
-    vertical-align: middle;
+.mainTitle a:hover{
+    text-decoration:underline;
 }
 .footer{
     width:100%;

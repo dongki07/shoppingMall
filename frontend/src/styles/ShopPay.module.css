@@ -70,12 +70,10 @@ a{
     width:100%;
     height:850px;
 }
-.basketMain{
+.payMain{
     width:100%;
+    height:100%;
     padding:0 5vw;
-    display:flex;
-    justify-content:space-between;
-    flex-direction:column;
 }
 .mainTitle{
     width:100%;
@@ -90,113 +88,99 @@ a{
 .mainList{
     width:100%;
     height:700px;
-    overflow:auto;
 }
-.mainList>ul>li{
-    width:100%;
-    height:200px;
-    margin:25px 0;
-    border-top:1px solid black;
+.mainList table{
+    margin:10px auto;
+}
+.mainList th{
+    border:1px solid black;
+    background-color: rgb(201, 240, 180);
+}
+.mainList td{
+    text-align:center;
     border-bottom:1px solid black;
-    display:flex;
-    justify-content:space-around;
 }
-.listImg, .listImg img{
-    width:300px;
-    height:198px;
+.mainList tr{
+    height:30px;
 }
-.listImg a:hover{
-    opacity:0.5;
+.mainList span{
+    color:red;
 }
-.listTitle{
-    width:500px;
-    height:200px;
+.payInput{
+    border:1px solid black;
+    border-radius:10px;
 }
-.listTitle h2{
+.payCard{
     width:100%;
-    height:100px;
-    line-height:100px;
-    font-size:48px;
+    height:150px;
 }
-.listTitle ul{
-    width:400px;
+.payCard h2{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+}
+.payCard ul{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+.payCard li{
+    width:200px;
+    height:80px;
+    background-color: rgb(180, 180, 180);
+    border-radius:10px;
+    margin:0 10px;
+    border:1px solid black;
+}
+.payCard a{
+    display:block;
+    width:100%;
+    height:100%;
+    line-height:80px;
+    text-align:center;
+    color:black;
+}
+.payCard a:hover{
+    background-color: rgb(116, 116, 116);
+    color:white;
+    border:1px solid white;
+    border-radius:10px;
+    transition:all 0.2s;
+}
+.cardDetail{
+    width:100%;
+    padding:0 10%;
+    margin:10px 0;
+}
+.cardDetail h2{
+    width:100px;
+    line-height:50px;
+    float:left;
+}
+.cardDetail ul{
+    height:50px;
     display:flex;
     justify-content:space-between;
 }
-.listTitle li{
-    font-size:28px;
-}
-.listTitle span{
-    color:red;
-}
-.listqua{
-    width:200px;
-    height:200px;
-}
-.setqua{
-    width:200px;
-    height:100px;
-    padding:30px 0;
-}
-.setqua input{
-    width:200px;
-    height:40px;
-    font-size:20px;
-}
-.setinde{
-    width:200px;
-    height:100px;
-}
-.setinde input{
-    width:100px;
-    height:40px;
-    font-size:20px;
-}
-.inc{background-color:rgb(147, 224, 147);}
-.dec{background-color:rgb(223, 123, 123);}
-.listClose{
-    width:100px;
-    height:200px;
-    padding:50px 0;
-}
-.listClose a{
-    width:100px;
-    height:100px;
-    font-size:64px;
-    text-align:center;
-    border-radius:50%;
+.cardDetail select, .cardDetail input{
+    float:left;
     display:block;
-    color:black;
+    height:30px;
+    margin:10px;
 }
-.listClose a:hover{
-    background-color: rgb(190, 190, 190);
-    transition:all 0.5s;
+.cardDetail select{
+    width:150px;
 }
-.emptyBasket{
-    width:100%;
-    height:200px;
-    margin-top:50px;
-    /* background-color: rgb(147, 224, 147); */
-    text-align:center;
+.cardDetail input{
+    width:400px;
 }
-.emptyBasket h2{
-    width:100%;
-    height:50px;
-    line-height:50px;
-    font-size:32px;
-}
-.emptyBasket p{
-    width:100%;
-    height:50px;
-    line-height:50px;
-    font-size:28px;
-}
-.emptyBasket a{
-    color:rgb(29, 77, 33);
-}
-.emptyBasket a:hover{
-    font-weight:bold;
-    text-decoration:underline;
+.cardDetail p{
+    width:30px;
+    height:30px;
+    margin:5px 0;
+    float:left;
+    font-size:24px;
 }
 .mainResult{
     width:100%;
@@ -214,9 +198,6 @@ a{
 .mainResult h2{
     font-size:24px;
     line-height:40px;
-}
-.mainResult i{
-    font-size:40px;
 }
 .mainResult input{
     width:200px;

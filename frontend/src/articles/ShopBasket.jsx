@@ -1,6 +1,6 @@
 import style from "../styles/ShopBasket.module.css";
-import { Link } from "react-router-dom";
-import React, { useContext, useState, useRef, use, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { DataContext } from "./DataContext";
 
 function ShopBasket() {
@@ -9,6 +9,7 @@ function ShopBasket() {
     const [sum, setSum] = useState(0);
 
     const closeBtnRef = useRef({});
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         console.log(basket);
@@ -83,7 +84,7 @@ function ShopBasket() {
                     <div className={style.mainList}>
                         <ul>
                             {/* 장바구니 목록  */}
-                            {basket.map(basket => {
+                            {basket.length > 0 ? basket.map(basket => {
                                 const data = shopData.find(shop => shop.id == basket.id);
 
                                 if(!closeBtnRef.current[basket.id]){
@@ -100,7 +101,7 @@ function ShopBasket() {
                                             <ul>
                                                 <li><span>{data.sale}%</span></li>
                                                 <li>|</li>
-                                                <li>{data.cost}원</li>
+                                                <li>₩{data.cost.toLocaleString()}</li>
                                                 <li>|</li>
                                                 <li>수량: {basket.qua}</li>
                                             </ul>
@@ -119,13 +120,18 @@ function ShopBasket() {
                                         </div>
                                     </li>
                                 );
-                            })}
+                            }) : <div className={style.emptyBasket}>
+                                <h2>현재 장바구니에 담긴 상품이 없습니다</h2>
+                                <p>상품을 골라서 원하는 만큼 수량을 정해 장바구니에 담으세요</p>
+                                <p><Link to="/menu/1">메뉴 바로가기</Link></p>
+                            </div>}
                         </ul>
                     </div>
                     {basket.length > 0 && <div className={style.mainResult}>
                         <ul>
-                            <li><h2>총 금액: {sum}원</h2></li>
-                            <li><input type="button" value="결제하기" /></li>
+                            <li><h2>총 금액: ₩{sum.toLocaleString()}</h2></li>
+                            <li><i class="fa-solid fa-truck-fast"></i></li>
+                            <li><input type="button" value="결제하기" onClick={() => navigate(`/basket/pay`)} /></li>
                         </ul>
                     </div>}
                 </div>

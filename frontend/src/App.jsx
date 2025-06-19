@@ -3,6 +3,8 @@ import Main from "./articles/ShopMain";
 import Menu from "./articles/ShopMenu";
 import Info from "./articles/ShopInfo";
 import Basket from "./articles/ShopBasket";
+import Pay from "./articles/ShopPay";
+import Success from "./articles/Success";
 import DataProvider from "./articles/DataProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -16,6 +18,8 @@ function App() {
           <Route path="/menu/:id" element={<Menu />}></Route>
           <Route path="/info/:id" element={<Info />}></Route>
           <Route path="/basket" element={<Basket />}></Route>
+          <Route path="/basket/pay" element={<Pay />}></Route>
+          <Route path="/success" element={<Success />}></Route>
         </Routes>
       </DataProvider>
     </BrowserRouter>
