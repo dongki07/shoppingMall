@@ -88,12 +88,12 @@ function ShopPay() {
                                     <ul>
                                         {cardPay.map((data, i) => (
                                             <li key={i} className={`${activeCard == i ? style.active : ''}`}>
-                                                <a href="#" onClick={() => setActiveCard(i)}>네이버페이</a>
+                                                <a href="#" onClick={() => setActiveCard(i)}>{data}</a>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                                <div className={style.cardDetail}>
+                                {activeCard != null && <div className={style.cardDetail}>
                                     <ul>
                                         <li>
                                             <h2>카드사</h2>
@@ -145,7 +145,7 @@ function ShopPay() {
                                             <input type="text" name="email"/>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>}
                             </div>
                         </form>
                     </div>
