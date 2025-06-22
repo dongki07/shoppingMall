@@ -6,10 +6,9 @@ import { DataContext } from "./DataContext";
 function ShopPay() {
     const { shopData, basket } = useContext(DataContext);
     const [ sum, setSum ] = useState(0);
+     const [activeCard, setActiveCard] = useState(null);
+    const cardPay = ["신용/체크 카드", "네이버페이", "카카오페이"];
     const navigate = useNavigate();
-    
-    console.log(shopData);
-    console.log(basket);
 
     useEffect(() => {
         updateSum();
@@ -78,18 +77,20 @@ function ShopPay() {
                                         </tr>
                                     );
                                 })}
-                                <tr>
+                                {/* <tr>
                                     <td colSpan="3">합계</td>
                                     <td colSpan="2"><b>₩{sum.toLocaleString()}</b></td>
-                                </tr>
+                                </tr> */}
                             </table>
                             <div className={style.payInput}>
                                 <div className={style.payCard}>
                                     <h2>결제 방법</h2>
                                     <ul>
-                                        <li><a href="#">신용/체크 카드</a></li>
-                                        <li><a href="#">네이버페이</a></li>
-                                        <li><a href="#">카카오페이</a></li>
+                                        {cardPay.map((data, i) => (
+                                            <li key={i} className={`${activeCard == i ? style.active : ''}`}>
+                                                <a href="#" onClick={() => setActiveCard(i)}>네이버페이</a>
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                                 <div className={style.cardDetail}>

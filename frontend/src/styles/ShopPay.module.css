@@ -148,6 +148,12 @@ a{
     border-radius:10px;
     transition:all 0.2s;
 }
+.payCard li{
+    opacity:0.5;
+}
+.payCard li.active{
+    opacity:1;
+}
 .cardDetail{
     width:100%;
     padding:0 10%;
