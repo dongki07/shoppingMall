@@ -43,6 +43,22 @@ export default function DataProvider({children}){
             "sale": 10,
             "url": "SoWhat",
             "ext": ".jpg"
+        }, {
+            "id": 6,
+            "title": "진라면 순한맛",
+            "subTitle": "그렇다 진라면 순한맛이다",
+            "cost": 1450,
+            "sale": 5,
+            "url": "JinRamen",
+            "ext": ".jpg"
+        }, {
+            "id": 7,
+            "title": "진라면 매운맛",
+            "subTitle": "약칭 진매 먹으면 맛있다",
+            "cost": 1500,
+            "sale": 5,
+            "url": "JinMaeRamen",
+            "ext": ".jpg"
         }
     ]);
 

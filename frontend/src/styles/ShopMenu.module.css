@@ -30,7 +30,7 @@ a{
     height:100px;
     float:right;
 }
-.headerMenu a:hover{
+.logo a:hover, .headerMenu a:hover{
     text-decoration:underline solid white;
 }
 .nav{

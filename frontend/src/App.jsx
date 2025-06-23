@@ -2,6 +2,7 @@ import Applogo from "./articles/AppLogo";
 import Main from "./articles/ShopMain";
 import Menu from "./articles/ShopMenu";
 import Info from "./articles/ShopInfo";
+import Login from "./articles/Login";
 import Basket from "./articles/ShopBasket";
 import Pay from "./articles/ShopPay";
 import Success from "./articles/Success";
@@ -17,6 +18,7 @@ function App() {
           <Route path="/main" element={<Main />}></Route>
           <Route path="/menu/:id" element={<Menu />}></Route>
           <Route path="/info/:id" element={<Info />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/basket" element={<Basket />}></Route>
           <Route path="/basket/pay" element={<Pay />}></Route>
           <Route path="/success" element={<Success />}></Route>

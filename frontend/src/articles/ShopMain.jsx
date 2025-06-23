@@ -4,15 +4,21 @@ import { Link } from "react-router-dom";
 import { DataContext } from "./DataContext";
 
 function ShopMain() {
-    const { shopData, basket } = useContext(DataContext);
+    const { shopData } = useContext(DataContext);
     console.log(shopData);
     return(
         <div>
             <div className={style.header}>
                 <div className={style.logo}>
-                    <h2>Testing</h2>
+                    <Link to='/main'>
+                        <h2>Testing</h2>
+                    </Link>
                 </div>
                 <div className={style.headerMenu}>
+                    <Link to='/login'>
+                        <i class="fa-solid fa-circle-user"></i>
+                        <h2>로그인</h2>
+                    </Link>
                 </div>
             </div>
             <div className={style.nav}>
@@ -51,7 +57,7 @@ function ShopMain() {
                     </div>
                     <div className={style.shopmenuList}>
                         <ul>
-                            {shopData.map(data => {
+                            {shopData.slice(0, 5).map(data => {
                                 return(
                                     <li key={data.id}>
                                         <a href="#">

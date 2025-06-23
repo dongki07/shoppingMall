@@ -15,7 +15,9 @@ function ShopMenu() {
         <div>
             <div className={style.header}>
                 <div className={style.logo}>
-                    <h2>Testing</h2>
+                    <Link to='/main'>
+                        <h2>Testing</h2>
+                    </Link>
                 </div>
                 <div className={style.headerMenu}>
                     <Link to='/main'>
