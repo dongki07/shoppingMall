@@ -4,12 +4,23 @@ import { useState, useEffect, useContext } from "react";
 import { DataContext } from "./DataContext";
 
 function ShopMenu() {
-    const {id} = useParams();
-    const { shopData } = useContext(DataContext);
-    const targetData = shopData.find(data => data.id == id);
+    const { shopData, login, loginStatus, activeBasket } = useContext(DataContext);
+    const { type } = useParams();
+    const filterData = shopData.filter(data => data.type == type);
     useEffect(() => {
-        console.log("id가 변경됐다");
-    }, [id]);
+        console.log("type가 변경됐다");
+    }, [type]);
+
+    const chunkArray = (arr, size) => {
+        const result = [];
+        for (let i = 0; i < arr.length; i += size) {
+          result.push(arr.slice(i, i + size));
+        }
+        return result;
+    };
+
+    const groupData = chunkArray(filterData, 5);
+    console.log(groupData);
 
     return(
         <div>
@@ -20,108 +31,48 @@ function ShopMenu() {
                     </Link>
                 </div>
                 <div className={style.headerMenu}>
-                    <Link to='/main'>
-                        <h2>back to main</h2>
-                    </Link>
+                    {loginStatus()}
                 </div>
             </div>
             <div className={style.nav}>
                 <div className={style.menuList}>
                     <ul>
-                        <li><Link to={`/menu/1`}>메뉴1</Link></li>
-                        <li><Link to={`/menu/2`}>메뉴2</Link></li>
-                        <li><Link to={`/menu/3`}>메뉴3</Link></li>
-                        <li><Link to={`/menu/4`}>메뉴4</Link></li>
-                        <li><Link to={`/menu/5`}>메뉴5</Link></li>
+                        <li><Link to={`/menu/ramen`}>라면</Link></li>
+                        <li><Link to={`/menu/drink`}>음료수</Link></li>
+                        <li><Link to={`/menu/fruVeg`}>과일/채소류</Link></li>
+                        <li><Link to={`/menu/appliance`}>가전제품</Link></li>
+                        <li><Link to={`/menu/etc`}>기타</Link></li>
                     </ul>
                 </div>
             </div>
             <div className={style.main}>
                 <div className={style.basket}>
-                    <Link to="/basket"><img src="/images/Basketicon.png" alt="basket" /></Link>
+                    <a href="#" onClick={activeBasket}><img src="/images/Basketicon.png" alt="basket" /></a>
                 </div>
                 <div className={style.shopmenu}>
                     <div className={style.shopmenuTitle}>
                         <ul>
-                            <li><h2>상품 메뉴 {targetData.id}</h2></li>
+                            <li><h2>상품 메뉴</h2></li>
                         </ul>
                     </div>
                     <div className={style.shopmenuList}>
-                        <ul>
-                            <li>
-                                <Link to={`/info/${targetData.id}`}>
-                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
-                                    <div className={style.shopmenuSub}>
-                                        <h2>{targetData.title}</h2>
-                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
-                                    </div>
-                                </Link>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
-                                    <div className={style.shopmenuSub}>
-                                        <h2>{targetData.title}</h2>
-                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
-                                    <div className={style.shopmenuSub}>
-                                        <h2>{targetData.title}</h2>
-                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
-                                    <div className={style.shopmenuSub}>
-                                        <h2>{targetData.title}</h2>
-                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div className={style.shopmenuImg}><img src={`/images/${targetData.url}${targetData.ext}`} alt={targetData.url} /></div>
-                                    <div className={style.shopmenuSub}>
-                                        <h2>{targetData.title}</h2>
-                                        <p><span>{targetData.sale}%</span> | {targetData.cost}원</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
+                        {groupData.map((group, index) => (
+                            <ul key={index}>
+                                {group.slice(0, 5).map(data => (
+                                    <li key={data.id}>
+                                        <Link to={`/info/${data.id}`}>
+                                            <div className={style.shopmenuImg}><img src={`/images/${data.url}${data.ext}`} alt={data.url} /></div>
+                                            <div className={style.shopmenuSub}>
+                                                <h2>{data.title}</h2>
+                                                {data.sale != 0 ?
+                                                <p><span>{data.sale}%</span> | ₩{data.cost.toLocaleString()}</p> :
+                                                <p>₩{data.cost.toLocaleString()}</p>}
+                                            </div>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -4,9 +4,9 @@ import { useContext, useState } from "react";
 import { DataContext } from "./DataContext";
 
 function ShopInfo() {
-    const { id } = useParams();
-    const { shopData, addBasket } = useContext(DataContext);
+    const { shopData, addBasket, login, loginStatus, activeBasket } = useContext(DataContext);
     
+    const { id } = useParams();
     const targetData = shopData.find(data => data.id == id);
     const [qua, setQua] = useState(1);
     const handleChange = (e) => {
@@ -35,29 +35,27 @@ function ShopInfo() {
                     </Link>
                 </div>
                 <div className={style.headerMenu}>
-                    <Link to='/main'>
-                        <h2>back to main</h2>
-                    </Link>
+                    {loginStatus()}
                 </div>
             </div>
             <div className={style.nav}>
                 <div className={style.menuList}>
                     <ul>
-                        <li><Link to={`/menu/1`}>메뉴1</Link></li>
-                        <li><Link to={`/menu/2`}>메뉴2</Link></li>
-                        <li><Link to={`/menu/3`}>메뉴3</Link></li>
-                        <li><Link to={`/menu/4`}>메뉴4</Link></li>
-                        <li><Link to={`/menu/5`}>메뉴5</Link></li>
+                        <li><Link to={`/menu/ramen`}>라면</Link></li>
+                        <li><Link to={`/menu/drink`}>음료수</Link></li>
+                        <li><Link to={`/menu/fruVeg`}>과일/채소류</Link></li>
+                        <li><Link to={`/menu/appliance`}>가전제품</Link></li>
+                        <li><Link to={`/menu/etc`}>기타</Link></li>
                     </ul>
                 </div>
             </div>
             <div className={style.main}>
                 <div className={style.basket}>
-                    <Link to="/basket"><img src="/images/Basketicon.png" alt="basket" /></Link>
+                    <a href="#" onClick={activeBasket}><img src="/images/Basketicon.png" alt="basket" /></a>
                 </div>
                 <div className={style.mainInfo}>
                     <div className={style.infoImg}>
-                        <a href="#"><img src={`/images/${targetData.url}${targetData.ext}`} alt="ChileMan"></img></a>
+                        <a href="#"><img src={`/images/${targetData.url}${targetData.ext}`} alt="test"></img></a>
                     </div>
                     <div className={style.infoSet}>
                         <div className={style.setTitle}>
@@ -65,10 +63,11 @@ function ShopInfo() {
                         </div>
                         <div className={style.setSubTitle}>
                             <p>{targetData.subTitle}</p>
+                            <p>판매량: {targetData.total.toLocaleString()}</p>
                         </div>
                         <div className={style.setInput}>
                             <ul>
-                                <li><p><span>{targetData.sale}%</span> | {targetData.cost * qua}원</p></li>
+                                <li><p><span>{targetData.sale}%</span> | ₩{(targetData.cost * qua).toLocaleString()}</p></li>
                                 <li><div className={style.inputBuy}>
                                 <input type="number" placeholder="수량" name="quantity" onChange={handleChange} />
                                 <button type="button" onClick={() => addBasket(targetData.id, qua)}>담기</button></div></li>

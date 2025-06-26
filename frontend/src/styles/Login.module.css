@@ -90,6 +90,17 @@ a{
     width:600px;
     height:40px;
 }
+.error{
+    width:100%;
+    height:50px;
+    padding:calc(15px / 2) 0;
+}
+.error h2{
+    height:35px;
+    font-size:20px;
+    text-align:center;
+    color:red;
+}
 .footer{
     width:100%;
     height:100px;

@@ -10,11 +10,6 @@ function Success() {
                         <h2>Testing</h2>
                     </Link>
                 </div>
-                <div className={style.headerMenu}>
-                    <Link to='/main'>
-                        <h2>back to main</h2>
-                    </Link>
-                </div>
             </div>
             <div className={style.nav}>
                 <div className={style.menuList}>
@@ -33,7 +28,7 @@ function Success() {
                 </div>
                 <div className={style.mainTitle}>
                     <h2>결제가 정상적으로 처리되었습니다.</h2>
-                    <p>홈 화면으로 돌아가실려면 <Link to="/main"><b>back to main</b></Link>을 클릭하세요.</p>
+                    <p>홈 화면으로 돌아가실려면 <Link to="/main"><b>Testing 로고</b></Link>를 클릭하세요.</p>
                 </div>
             </div>
             <div className={style.footer}></div>

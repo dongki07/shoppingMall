@@ -115,32 +115,43 @@ a{
 }
 .main{
     width:100%;
-    height:1200px;
 }
 .mainTop{
     width:100%;
     height:400px;
-    padding:50px 0;
+}
+.mainTop h2{
+    width:100%;
+    height:50px;
+    font-size:32px;
+    text-align:center;
 }
 .mainImg{
     width:100%;
     height:300px;
-    background-color: rgb(116, 116, 116);
+    background-color: rgba(116, 116, 116, 0.5);
 }
 .mainImg ul{
     display:flex;
     justify-content:space-around;
+    padding:30px 0;
 }
-.mainImg li, .mainImg img{
-    width:500px;
-    height:300px;
+.mainImg img{
+    width:300px;
+    height:200px;
 }
 .mainImg a:hover{
     opacity:0.5;
 }
+.mainImg span{
+    height:40px;
+    font-size:24px;
+    text-align:center;
+    color:black;
+    display:block;
+}
 .shopmenu{
     width:100%;
-    height:800px;
 }
 .shopmenuTitle{
     width:90%;
@@ -167,7 +178,6 @@ a{
 }
 .shopmenuList{
     width:90%;
-    height:750px;
     margin:0 5vw;
 }
 .shopmenuList ul{
@@ -180,7 +190,7 @@ a{
 .shopmenuList li{
     width:300px;
     height:300px;
-    background-color: rgb(99, 169, 91);
+    border:1px solid rgb(27, 77, 21);
 }
 .shopmenuList a:hover{
     opacity:0.5;

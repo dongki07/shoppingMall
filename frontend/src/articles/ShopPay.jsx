@@ -4,10 +4,10 @@ import { useContext, useState, useEffect } from "react";
 import { DataContext } from "./DataContext";
 
 function ShopPay() {
-    const { shopData, basket } = useContext(DataContext);
+    const { shopData, basket, login, loginStatus } = useContext(DataContext);
     const [ sum, setSum ] = useState(0);
      const [activeCard, setActiveCard] = useState(null);
-    const cardPay = ["신용/체크 카드", "네이버페이", "카카오페이"];
+    const cardPay = ["신용카드", "신용/체크 카드", "체크카드"];
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,19 +36,17 @@ function ShopPay() {
                     </Link>
                 </div>
                 <div className={style.headerMenu}>
-                    <Link to='/main'>
-                        <h2>back to main</h2>
-                    </Link>
+                    {loginStatus()}
                 </div>
             </div>
             <div className={style.nav}>
                 <div className={style.menuList}>
                     <ul>
-                        <li><Link to={`/menu/1`}>메뉴1</Link></li>
-                        <li><Link to={`/menu/2`}>메뉴2</Link></li>
-                        <li><Link to={`/menu/3`}>메뉴3</Link></li>
-                        <li><Link to={`/menu/4`}>메뉴4</Link></li>
-                        <li><Link to={`/menu/5`}>메뉴5</Link></li>
+                        <li><Link to={`/menu/ramen`}>라면</Link></li>
+                        <li><Link to={`/menu/drink`}>음료수</Link></li>
+                        <li><Link to={`/menu/fruVeg`}>과일/채소류</Link></li>
+                        <li><Link to={`/menu/appliance`}>가전제품</Link></li>
+                        <li><Link to={`/menu/etc`}>기타</Link></li>
                     </ul>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import React, { useContext, useState, useRef, useEffect } from "react";
 import { DataContext } from "./DataContext";
 
 function ShopBasket() {
-    const { shopData, basket, addBasket, deleteBasket } = useContext(DataContext);
+    const { shopData, basket, addBasket, deleteBasket, login, loginStatus } = useContext(DataContext);
     const [qua, setQua] = useState(1);
     const [sum, setSum] = useState(0);
 
@@ -12,7 +12,6 @@ function ShopBasket() {
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        console.log(basket);
         let quantity  = e.target.value;
         const minValue = 0;
         const maxValue = 1000;
@@ -62,19 +61,17 @@ function ShopBasket() {
                     </Link>
                 </div>
                 <div className={style.headerMenu}>
-                    <Link to='/main'>
-                        <h2>back to main</h2>
-                    </Link>
+                    {loginStatus()}
                 </div>
             </div>
             <div className={style.nav}>
                 <div className={style.menuList}>
                     <ul>
-                        <li><Link to={`/menu/1`}>메뉴1</Link></li>
-                        <li><Link to={`/menu/2`}>메뉴2</Link></li>
-                        <li><Link to={`/menu/3`}>메뉴3</Link></li>
-                        <li><Link to={`/menu/4`}>메뉴4</Link></li>
-                        <li><Link to={`/menu/5`}>메뉴5</Link></li>
+                        <li><Link to={`/menu/ramen`}>라면</Link></li>
+                        <li><Link to={`/menu/drink`}>음료수</Link></li>
+                        <li><Link to={`/menu/fruVeg`}>과일/채소류</Link></li>
+                        <li><Link to={`/menu/appliance`}>가전제품</Link></li>
+                        <li><Link to={`/menu/etc`}>기타</Link></li>
                     </ul>
                 </div>
             </div>
