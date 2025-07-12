@@ -65,7 +65,7 @@ function ShopMenu() {
                                             <div className={style.shopmenuSub}>
                                                 <h2>{data.title}</h2>
                                                 {data.sale != 0 ?
-                                                <p><span>{data.sale}%</span> | ₩{data.cost.toLocaleString()}</p> :
+                                                <p><span>{data.sale}%</span> | ₩{(data.cost * (1 - 0.01 * data.sale)).toLocaleString()}</p> :
                                                 <p>₩{data.cost.toLocaleString()}</p>}
                                             </div>
                                         </Link>

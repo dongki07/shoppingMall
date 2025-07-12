@@ -60,10 +60,11 @@ function ShopPay() {
                             <table width="80%" border="1">
                                 <tr>
                                     <th width="10%">상품 ID</th>
-                                    <th width="40%">상품명</th>
+                                    <th width="25%">상품명</th>
                                     <th width="10%">할인</th>
                                     <th width="20%">가격</th>
                                     <th width="15%">수량</th>
+                                    <th width="15%">총가격</th>
                                 </tr>
                                 {basket.map(basket => {
                                     const data = shopData.find(shop => shop.id == basket.id);
@@ -74,6 +75,7 @@ function ShopPay() {
                                             <td><span>{data.sale}%</span></td>
                                             <td>₩{data.cost.toLocaleString()}</td>
                                             <td>{basket.qua}매</td>
+                                            <td>₩{(data.cost * basket.qua).toLocaleString()}</td>
                                         </tr>
                                     );
                                 })}

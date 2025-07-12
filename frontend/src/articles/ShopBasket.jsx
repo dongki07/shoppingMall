@@ -122,7 +122,7 @@ function ShopBasket() {
                             }) : <div className={style.emptyBasket}>
                                 <h2>현재 장바구니에 담긴 상품이 없습니다</h2>
                                 <p>상품을 골라서 원하는 만큼 수량을 정해 장바구니에 담으세요</p>
-                                <p><Link to="/menu/1">메뉴 바로가기</Link></p>
+                                <p><Link to="/main">메뉴 바로가기</Link></p>
                             </div>}
                         </ul>
                     </div>

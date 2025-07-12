@@ -95,7 +95,7 @@ export default function DataProvider({children}){
             "title": "팔도비빔면",
             "subTitle": "팔도에서 만든 비빔면",
             "type": "ramen",
-            "cost": 1650,
+            "cost": 1600,
             "sale": 5,
             "total": 1125000,
             "url": "ramen/PaldoRamen",

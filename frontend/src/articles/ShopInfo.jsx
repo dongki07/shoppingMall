@@ -67,7 +67,7 @@ function ShopInfo() {
                         </div>
                         <div className={style.setInput}>
                             <ul>
-                                <li><p><span>{targetData.sale}%</span> | ₩{(targetData.cost * qua).toLocaleString()}</p></li>
+                                <li><p><span>{targetData.sale}%</span> | ₩{(targetData.cost * (1 - 0.01 * targetData.sale) * qua).toLocaleString()}</p></li>
                                 <li><div className={style.inputBuy}>
                                 <input type="number" placeholder="수량" name="quantity" onChange={handleChange} />
                                 <button type="button" onClick={() => addBasket(targetData.id, qua)}>담기</button></div></li>
