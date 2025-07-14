@@ -56,7 +56,7 @@ function ShopPay() {
                         <h2>결제수단</h2>
                     </div>
                     <div className={style.mainList}>
-                        <form name="pay" action="#" method="post">
+                        <form name="pay" action={handleCheck} method="post">
                             <table width="80%" border="1">
                                 <tr>
                                     <th width="10%">상품 ID</th>
@@ -75,7 +75,7 @@ function ShopPay() {
                                             <td><span>{data.sale}%</span></td>
                                             <td>₩{data.cost.toLocaleString()}</td>
                                             <td>{basket.qua}매</td>
-                                            <td>₩{(data.cost * basket.qua).toLocaleString()}</td>
+                                            <td>₩{(data.cost * (1 - 0.01 * data.sale) * basket.qua).toLocaleString()}</td>
                                         </tr>
                                     );
                                 })}
@@ -109,7 +109,7 @@ function ShopPay() {
                                         </li>
                                         <li>
                                             <h2>계좌번호</h2>
-                                            <input type="text" name="cardNum" placeholder="ex) 0000-000-000000"/>
+                                            <input type="text" name="cardNum" placeholder="ex) 0000-000-000000" />
                                         </li>
                                     </ul>
                                     <ul>
@@ -154,7 +154,7 @@ function ShopPay() {
                     {basket.length > 0 && <div className={style.mainResult}>
                         <ul>
                             <li><h2>총 금액: ₩{sum.toLocaleString()}</h2></li>
-                            <li><input type="button" value="결제하기" onClick={handleCheck} /></li>
+                            <li><input type="button" value="결제하기" onClick={handleCheck}/></li>
                         </ul>
                     </div>}
                 </div>
