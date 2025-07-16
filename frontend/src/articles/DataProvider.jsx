@@ -15,7 +15,7 @@ export default function DataProvider({children}){
             "id": "tester",
             "passwd": "test",
             "active": false
-        },
+        }
     ]);
     const user = login.find(data => data.active == true);
 
