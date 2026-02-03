@@ -11,4 +11,9 @@ public class FirstController {
     public void test() {
         System.out.println("Testing");
     }
+
+    @GetMapping("/list")
+    public int testList() {
+        return 1;
+    }
 }
