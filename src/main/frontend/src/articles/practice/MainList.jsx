@@ -1,11 +1,29 @@
-import { useContext, useEffect } from "react";
-import style from "../styles/ShopMain.module.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import style from "../../styles/practiceSheet/MainList.module.css";
 import { Link } from "react-router-dom";
-import { DataContext } from "./DataContext";
 
 function ShopMain() {
-    const { shopData, login, loginStatus } = useContext(DataContext);
-    console.log(shopData);
+    const [test, setTest] = useState(0);
+    const [data, setData] = useState({id: 2, name: "testing"});
+
+    const getData = async () => {
+        try{
+            const response = await axios.get("http://localhost:9090/main/list");
+            console.log(response.data);
+        }catch(e) {
+            console.log("오류 남 ㅅㄱ: ", e);
+        }
+    }
+
+    const postData = async () => {
+        try{
+            const response = await axios.post("http://localhost:9090/main/create", data);
+            console.log(response);
+        }catch(e) {
+            console.log("오류 남 ㅅㄱ: ", e);
+        }
+    }
 
     return(
         <div>
@@ -30,9 +48,12 @@ function ShopMain() {
             <div className={style.main}>
                 <div className={style.mainTop}>
                     <h2>Spring이란</h2>
+                    <div className={style.mainBtn}>
+                        <button type="button" onClick={getData}>GET 버튼</button>
+                        <button type="button" onClick={postData}>POST 버튼</button>
+                    </div>
                 </div>
                 <div className={style.mainList}>
-                    <h2></h2>
                 </div>
             </div>
             <div className={style.footer}></div>

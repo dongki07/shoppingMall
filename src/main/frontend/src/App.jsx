@@ -6,7 +6,7 @@ import Login from "./articles/Login";
 import Basket from "./articles/ShopBasket";
 import Pay from "./articles/ShopPay";
 import Success from "./articles/Success";
-import MainList from "./articles/MainList";
+import MainList from "./articles/practice/MainList";
 import DataProvider from "./articles/DataProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
