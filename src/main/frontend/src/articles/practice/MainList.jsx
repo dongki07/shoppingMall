@@ -4,13 +4,14 @@ import style from "../../styles/practiceSheet/MainList.module.css";
 import { Link } from "react-router-dom";
 
 function ShopMain() {
-    const [test, setTest] = useState(0);
+    const [test, setTest] = useState([]);
     const [data, setData] = useState({id: 2, name: "testing"});
 
     const getData = async () => {
         try{
             const response = await axios.get("http://localhost:9090/main/list");
             console.log(response.data);
+            setTest(response.data);
         }catch(e) {
             console.log("오류 남 ㅅㄱ: ", e);
         }
@@ -46,7 +47,7 @@ function ShopMain() {
                 </div>
             </div>
             <div className={style.main}>
-                <div className={style.mainTop}>
+                <div className={style.mainTitle}>
                     <h2>Spring이란</h2>
                     <div className={style.mainBtn}>
                         <button type="button" onClick={getData}>GET 버튼</button>
@@ -54,6 +55,22 @@ function ShopMain() {
                     </div>
                 </div>
                 <div className={style.mainList}>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>제목</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {test.map(data => (
+                                <tr key={data.id}>
+                                    <td>{data.id}</td>
+                                    <td>{data.name}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div className={style.footer}></div>

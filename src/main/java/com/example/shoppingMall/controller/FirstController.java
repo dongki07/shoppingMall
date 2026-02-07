@@ -30,7 +30,7 @@ public class FirstController {
         return firstRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/index/{id}")
     public FirstEntity testIndex(@PathVariable("id") long id) {
         return firstRepository.findById(id).orElse(null);
     }
