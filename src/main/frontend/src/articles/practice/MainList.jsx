@@ -55,6 +55,7 @@ function ShopMain() {
                     </div>
                 </div>
                 <div className={style.mainList}>
+                    <h2>1.</h2>
                     <table border="1">
                         <thead>
                             <tr>
@@ -71,6 +72,13 @@ function ShopMain() {
                             ))}
                         </tbody>
                     </table>
+                    <h2>2.</h2>
+                    {test.map(data => (
+                        <ul key={data.id}>
+                            <li>{data.id}</li>
+                            <li>{data.name}</li>
+                        </ul>
+                    ))}
                 </div>
             </div>
             <div className={style.footer}></div>
