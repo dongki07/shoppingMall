@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import style from "../../styles/practiceSheet/MainList.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-function MainList() {
+function MainIndex() {
+    const { id } = useParams();
     const [test, setTest] = useState([]);
     const [data, setData] = useState({id: 2, name: "testing"});
 
@@ -31,7 +32,7 @@ function MainList() {
             <div className={style.header}>
                 <div className={style.logo}>
                     <Link to='/main'>
-                        <h2>Testing?</h2>
+                        <h2>Testing {id}</h2>
                     </Link>
                 </div>
             </div>
@@ -55,23 +56,7 @@ function MainList() {
                     </div>
                 </div>
                 <div className={style.mainList}>
-                    <h2>1. 게시물</h2>
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>제목</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {test.map(data => (
-                                <tr key={data.id}>
-                                    <td width="25%">{data.id}</td>
-                                    <td><a href="#">{data.name}</a></td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <h2>{id}</h2>
                 </div>
             </div>
             <div className={style.footer}></div>
@@ -79,4 +64,4 @@ function MainList() {
     );
 }
 
-export default MainList;
+export default MainIndex;

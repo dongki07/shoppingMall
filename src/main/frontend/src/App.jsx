@@ -6,7 +6,9 @@ import Login from "./articles/Login";
 import Basket from "./articles/ShopBasket";
 import Pay from "./articles/ShopPay";
 import Success from "./articles/Success";
+
 import MainList from "./articles/practice/MainList";
+import MainIndex from "./articles/practice/MainIndex";
 import DataProvider from "./articles/DataProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -23,7 +25,9 @@ function App() {
           <Route path="/basket" element={<Basket />}></Route>
           <Route path="/basket/pay" element={<Pay />}></Route>
           <Route path="/success" element={<Success />}></Route>
+
           <Route path="/list" element={<MainList />}></Route>
+          <Route path="/index/:id" element={<MainIndex />}></Route>
         </Routes>
       </DataProvider>
     </BrowserRouter>
