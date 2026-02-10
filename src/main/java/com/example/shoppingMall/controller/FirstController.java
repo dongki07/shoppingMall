@@ -39,6 +39,5 @@ public class FirstController {
     public void testCreate(@RequestBody FirstDto form) {
         FirstEntity target = form.toEntity();
         firstRepository.save(target);
-        log.info("잘 터짐 ㅇㅇ: "+target);
     }
 }

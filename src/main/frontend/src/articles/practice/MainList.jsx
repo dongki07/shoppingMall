@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function MainList() {
     const [test, setTest] = useState([]);
-    const [data, setData] = useState({id: 2, name: "testing"});
+    const [data, setData] = useState({id: 4, name: "testing"});
 
     const getData = async () => {
         try{
@@ -25,6 +25,19 @@ function MainList() {
             console.log("오류 남 ㅅㄱ: ", e);
         }
     }
+
+    const inputChange = (e) => {
+        const test = !isNaN(e.target.value) ? Number(e.target.value) : e.target.value;
+        setData(data => ({
+            ...data,
+            [e.target.name]: test
+        }));
+        console.log(data);
+    }
+
+    useEffect(() => {
+        getData();
+    }, []);
 
     return(
         <div>
@@ -67,11 +80,19 @@ function MainList() {
                             {test.map(data => (
                                 <tr key={data.id}>
                                     <td width="25%">{data.id}</td>
-                                    <td><a href="#">{data.name}</a></td>
+                                    <td><Link to={`/index/${data.id}`}>{data.name}</Link></td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    <h2>2. 등록</h2>
+                    <ul>
+                        <li>ID: <input type="text" name="id" onChange={inputChange}/></li>
+                        <li>제목: <input type="text" name="name" onChange={inputChange} /></li>
+                    </ul>
+                    <button type="button">전송</button>
                 </div>
             </div>
             <div className={style.footer}></div>

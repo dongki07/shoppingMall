@@ -6,7 +6,7 @@ import { DataContext } from "./DataContext";
 function ShopPay() {
     const { shopData, basket, login, loginStatus } = useContext(DataContext);
     const [ sum, setSum ] = useState(0);
-     const [activeCard, setActiveCard] = useState(null);
+    const [activeCard, setActiveCard] = useState(null);
     const cardPay = ["신용카드", "신용/체크 카드", "체크카드"];
     const navigate = useNavigate();
 
