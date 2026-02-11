@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function MainList() {
     const [test, setTest] = useState([]);
-    const [data, setData] = useState({id: 4, name: "testing"});
+    const [data, setData] = useState({id: null, name: "testing"});
 
     const getData = async () => {
         try{
@@ -32,7 +32,11 @@ function MainList() {
             ...data,
             [e.target.name]: test
         }));
-        console.log(data);
+    }
+
+    const deleteData = async (e) => {
+        const response = await axios.delete(`http://localhost:9090/main/delete/${e}`);
+        getData();
     }
 
     useEffect(() => {
@@ -74,13 +78,15 @@ function MainList() {
                             <tr>
                                 <th>ID</th>
                                 <th>제목</th>
+                                <th>삭제빵</th>
                             </tr>
                         </thead>
                         <tbody>
                             {test.map(data => (
                                 <tr key={data.id}>
                                     <td width="25%">{data.id}</td>
-                                    <td><Link to={`/index/${data.id}`}>{data.name}</Link></td>
+                                    <td width="60%"><Link to={`/index/${data.id}`}>{data.name}</Link></td>
+                                    <td><button type="button" onClick={() => deleteData(data.id)}>삭제</button></td>
                                 </tr>
                             ))}
                         </tbody>
@@ -89,10 +95,8 @@ function MainList() {
                 <div>
                     <h2>2. 등록</h2>
                     <ul>
-                        <li>ID: <input type="text" name="id" onChange={inputChange}/></li>
                         <li>제목: <input type="text" name="name" onChange={inputChange} /></li>
                     </ul>
-                    <button type="button">전송</button>
                 </div>
             </div>
             <div className={style.footer}></div>

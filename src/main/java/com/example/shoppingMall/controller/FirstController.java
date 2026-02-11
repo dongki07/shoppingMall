@@ -40,4 +40,10 @@ public class FirstController {
         FirstEntity target = form.toEntity();
         firstRepository.save(target);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void testDelete(@PathVariable("id") long id) {
+        FirstEntity target = firstRepository.findById(id).orElse(null);
+        if(target != null) firstRepository.delete(target);
+    }
 }

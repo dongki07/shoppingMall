@@ -15,7 +15,7 @@ public class ShoppingMallApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/main/**")
 						.allowedOrigins("http://localhost:3000")
-						.allowedMethods("GET", "POST")
+						.allowedMethods("GET", "POST", "DELETE")
 						.allowedHeaders("*")
 						.allowCredentials(true);
 			}
