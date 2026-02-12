@@ -26,17 +26,23 @@ function MainList() {
         }
     }
 
+    const updateData = async () => {
+        const response = await axios.post('http://localhost:9090/main/update', data);
+        console.log(response);
+        getData();
+    }
+
+    const deleteData = async (e) => {
+        const response = await axios.delete(`http://localhost:9090/main/delete/${e}`);
+        getData();
+    }
+
     const inputChange = (e) => {
         const test = !isNaN(e.target.value) ? Number(e.target.value) : e.target.value;
         setData(data => ({
             ...data,
             [e.target.name]: test
         }));
-    }
-
-    const deleteData = async (e) => {
-        const response = await axios.delete(`http://localhost:9090/main/delete/${e}`);
-        getData();
     }
 
     useEffect(() => {
@@ -78,6 +84,7 @@ function MainList() {
                             <tr>
                                 <th>ID</th>
                                 <th>제목</th>
+                                <th>자</th>
                                 <th>삭제빵</th>
                             </tr>
                         </thead>
@@ -85,8 +92,9 @@ function MainList() {
                             {test.map(data => (
                                 <tr key={data.id}>
                                     <td width="25%">{data.id}</td>
-                                    <td width="60%"><Link to={`/index/${data.id}`}>{data.name}</Link></td>
-                                    <td><button type="button" onClick={() => deleteData(data.id)}>삭제</button></td>
+                                    <td width="55%"><Link to={`/index/${data.id}`}>{data.name}</Link></td>
+                                    <td width="10%"><button type="button" onClick={() => setData(prev => ({...prev, id: data.id}))}>수정</button></td>
+                                    <td width="10%"><button type="button" onClick={() => deleteData(data.id)}>삭제</button></td>
                                 </tr>
                             ))}
                         </tbody>
@@ -96,6 +104,7 @@ function MainList() {
                     <h2>2. 등록</h2>
                     <ul>
                         <li>제목: <input type="text" name="name" onChange={inputChange} /></li>
+                        <li><button type="button" onClick={() => updateData()}>수정 전용 버튼</button></li>
                     </ul>
                 </div>
             </div>

@@ -41,6 +41,13 @@ public class FirstController {
         firstRepository.save(target);
     }
 
+    @PostMapping("/update")
+    public void testUpdate(@RequestBody FirstDto form) {
+        FirstEntity target = form.toEntity();
+        FirstEntity test = firstRepository.findById(target.getId()).orElse(null);
+        if(test != null) firstRepository.save(target);
+    }
+
     @DeleteMapping("/delete/{id}")
     public void testDelete(@PathVariable("id") long id) {
         FirstEntity target = firstRepository.findById(id).orElse(null);
