@@ -68,6 +68,7 @@ a{
     width:100%;
     height:calc(100vh - 250px);
     padding:0 50px;
+    color:white;
 }
 .mainTop{
     width:100%;
@@ -78,16 +79,6 @@ a{
     height:50px;
     font-size:32px;
     text-align:center;
-}
-.mainBtn{
-    width:400px;
-    height:100px;
-    margin:0 auto;
-}
-.mainBtn button{
-    width:300px;
-    height:40px;
-    margin:0 50px;
 }
 .mainList{
     width:100%;
@@ -115,6 +106,37 @@ a{
 }
 .mainList tr:hover{
     font-weight:bold;
+}
+.dataList{
+    width:100%;
+    height:200px;
+    background-color:blue;
+    overflow:hidden;
+}
+.dataList ul{
+    display:flex;
+    justify-content:left;
+    transform:translateX(0px);
+}
+.dataList li{
+    width:300px;
+    height:200px;
+    margin:0 150px;
+    background-color:red;
+    flex-shrink: 0;
+}
+.dataList h2{
+    text-align:center;
+}
+.mainBtn{
+    width:400px;
+    height:100px;
+    margin:0 auto;
+}
+.mainBtn button{
+    width:300px;
+    height:40px;
+    margin:0 50px;
 }
 .footer{
     width:100%;

@@ -69,17 +69,13 @@ function MainList() {
                     </ul>
                 </div>
             </div>
-            <div className={style.main}>
+            <div className={style.main} style={{background:`url('/images/easter/nightsky.png') no-repeat center`, backgroundSize:"100% 100%"}}>
                 <div className={style.mainTitle}>
                     <h2>Spring이란</h2>
-                    <div className={style.mainBtn}>
-                        <button type="button" onClick={getData}>GET 버튼</button>
-                        <button type="button" onClick={postData}>POST 버튼</button>
-                    </div>
                 </div>
                 <div className={style.mainList}>
                     <h2>1. 게시물</h2>
-                    <table border="1">
+                    {/* <table border="1">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -98,10 +94,23 @@ function MainList() {
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
+                    </table> */}
+                    <div className={style.dataList}>
+                        <ul>
+                            {test.map(data => (
+                                <li key={data.id}>
+                                    <div><h2>{data.id}. {data.name}</h2></div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
                 <div>
                     <h2>2. 등록</h2>
+                    <div className={style.mainBtn}>
+                        <button type="button" onClick={getData}>GET 버튼</button>
+                        <button type="button" onClick={postData}>POST 버튼</button>
+                    </div>
                     <ul>
                         <li>제목: <input type="text" name="name" onChange={inputChange} /></li>
                         <li><button type="button" onClick={() => updateData()}>수정 전용 버튼</button></li>
