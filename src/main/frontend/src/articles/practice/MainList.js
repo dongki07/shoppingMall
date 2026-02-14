@@ -7,6 +7,8 @@ function MainList() {
     const [test, setTest] = useState([]);
     const [data, setData] = useState({id: null, name: "testing"});
 
+    const [nextNum, setNextNum] = useState(1);
+
     const getData = async () => {
         try{
             const response = await axios.get("http://localhost:9090/main/list");
@@ -48,6 +50,26 @@ function MainList() {
     useEffect(() => {
         getData();
     }, []);
+
+    useEffect(() => {
+        const keyInput = (e) => {
+            switch(e.key) {
+                case 'a':
+                    if(nextNum > 1) setNextNum(prev => prev - 1);
+                    break;
+
+                case 'd':
+                    if(nextNum < 6) setNextNum(prev => prev + 1);
+                    break;
+
+                default:
+                    console.log("?");
+            }
+        }
+        window.addEventListener("keydown", keyInput);
+
+        return () => window.removeEventListener("keydown", keyInput);
+    }, [nextNum]);
 
     return(
         <div>
@@ -96,10 +118,12 @@ function MainList() {
                         </tbody>
                     </table> */}
                     <div className={style.dataList}>
-                        <ul>
+                        <ul style={{transform:`translateX(${(600 + (-600 * (nextNum - 1))) + 'px'})`}}>
                             {test.map(data => (
                                 <li key={data.id}>
-                                    <div><h2>{data.id}. {data.name}</h2></div>
+                                    <div className={data.id == nextNum ? `${style.active}` : `${style.disActive}`}>
+                                        <h2>{data.id}. {data.name}</h2>
+                                    </div>
                                 </li>
                             ))}
                         </ul>
