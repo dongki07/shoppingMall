@@ -123,6 +123,7 @@ function MainList() {
                                 <li key={data.id}>
                                     <div className={data.id == nextNum ? `${style.active}` : `${style.disActive}`}>
                                         <h2>{data.id}. {data.name}</h2>
+                                        <p>Testing {data.id}</p>
                                     </div>
                                 </li>
                             ))}
