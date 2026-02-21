@@ -17,4 +17,7 @@ public class FirstEntity {
 
     @Column
     public String name;
+
+    @Column
+    public String content;
 }

@@ -1,7 +1,7 @@
-INSERT INTO test VALUES(1, 'aaaaa');
-INSERT INTO test VALUES(2, 'bbbbb');
-INSERT INTO test VALUES(3, 'ccccc');
-INSERT INTO test VALUES(4, 'ddddd');
-INSERT INTO test VALUES(5, 'eeeee');
-INSERT INTO test VALUES(6, 'fffff');
+INSERT INTO test(id, name, content) VALUES(1, 'aaaaa', 'test');
+INSERT INTO test(id, name, content) VALUES(2, 'bbbbb', 'test');
+INSERT INTO test(id, name, content) VALUES(3, 'ccccc', 'test');
+INSERT INTO test(id, name, content) VALUES(4, 'ddddd', 'test');
+INSERT INTO test(id, name, content) VALUES(5, 'eeeee', 'test');
+INSERT INTO test(id, name, content) VALUES(6, 'fffff', 'test');
 

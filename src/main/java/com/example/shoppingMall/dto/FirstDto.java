@@ -11,8 +11,9 @@ import lombok.Setter;
 public class FirstDto {
     public Long id;
     public String name;
+    public String content;
 
     public FirstEntity toEntity() {
-        return new FirstEntity(id, name);
+        return new FirstEntity(id, name, content);
     }
 }
