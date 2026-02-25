@@ -9,6 +9,7 @@ import Success from "./articles/Success";
 
 import MainList from "./articles/practice/MainList";
 import MainIndex from "./articles/practice/MainIndex";
+import JongSu from "./articles/practice/JongSu";
 import DataProvider from "./articles/DataProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -28,6 +29,7 @@ function App() {
 
           <Route path="/list" element={<MainList />}></Route>
           <Route path="/index/:id" element={<MainIndex />}></Route>
+          <Route path="/jongsu" element={<JongSu />}></Route>
         </Routes>
       </DataProvider>
     </BrowserRouter>
