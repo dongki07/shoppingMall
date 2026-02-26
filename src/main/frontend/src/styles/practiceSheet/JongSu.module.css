@@ -78,11 +78,55 @@ a{
     font-size:40px;
     text-align:center;
 }
+.jongsugi{
+    width:550px;
+    height:100%;
+    padding:0 25px;
+}
 .mainModule{
     width:500px;
-    height:400px;
+    height:350px;
     background-color:gray;
-    margin:0 calc(50% - 250px);
+}
+.mainModule h2{
+    width:100%;
+    height:50px;
+    text-align:center;
+}
+.mainModule ul{
+    display:flex;
+    justify-content:space-around;
+}
+.mainModule li{
+    width:100px;
+    height:125px;
+}
+.mainModule a{color:white;}
+.mainModule a:hover{opacity:0.5; font-size:20px;}
+.moduleImg{
+    width:100px;
+    height:100px;
+    background-color:blue;
+    padding:0 10px;
+}
+.mainModule p{
+    text-align:center;
+}
+.moduleCheck{
+    width:100%;
+    height:25px;
+    margin-top:150px;
+    text-align:center;
+}
+.mainCenter{
+    width:500px;
+    height:250px;
+    background-color:black;
+}
+.mainBottom{
+    width:500px;
+    height:50px;
+    background-color:gray;
 }
 .footer{
     width:100%;
