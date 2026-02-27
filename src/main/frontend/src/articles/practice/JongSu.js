@@ -5,10 +5,20 @@ import { Link } from "react-router-dom";
 
 function JongSu() {
     const [waterAble, setWaterAble] = useState(false);
+    const [waterMode, setWaterMode] = useState(1);
     const [water, setWater] = useState(0);
+    const [ice, setIce] = useState(0);
 
     const switchTurn = () => {
         setWaterAble(!waterAble);
+    }
+
+    const switchWater = (e) => {
+        setWaterMode(e);
+    }
+
+    const addIce = () => {
+       setIce(prev => prev + 1);
     }
 
     useEffect(() => {
@@ -51,15 +61,35 @@ function JongSu() {
                         <h2>정ㅅㅜ기</h2>
                         <ul>
                             <li>
-                                <a href="#" onClick={switchTurn}>
+                                <a href="#" onClick={() => switchWater(1)}>
                                     <div className={style.moduleImg}>z</div>
-                                    <p>물!</p>
+                                    <p>온</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" onClick={() => alert("잘 된다")}>
+                                <a href="#" onClick={() => switchWater(2)}>
                                     <div className={style.moduleImg}>z</div>
-                                    <p>물!</p>
+                                    <p>정</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onClick={() => switchWater(3)}>
+                                    <div className={style.moduleImg}>z</div>
+                                    <p>냉</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#" onClick={switchTurn}>
+                                    <div className={style.moduleImg}>z</div>
+                                    <p>물</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onClick={addIce}>
+                                    <div className={style.moduleImg}>z</div>
+                                    <p>얼음</p>
                                 </a>
                             </li>
                             <li>
@@ -70,7 +100,7 @@ function JongSu() {
                             </li>
                         </ul>
                         <div className={style.moduleCheck} style={{backgroundColor: waterAble ? "green" : "red"}}>
-                        물 활성화: {waterAble ? "ON" : "OFF"}, 물: {water}ml</div>
+                        물 활성화: {waterAble ? "ON" : "OFF"}, 물: {water}ml, 얼음: {ice}g</div>
                     </div>
                     <div className={style.mainCenter}></div>
                     <div className={style.mainBottom}></div>
