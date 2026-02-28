@@ -86,7 +86,7 @@ a{
 .mainModule{
     width:500px;
     height:350px;
-    background-color:gray;
+   background: linear-gradient(160deg,rgba(143, 143, 143, 1) 0%, rgba(100, 105, 104, 1) 50%, rgba(61, 58, 58, 1) 100%);
 }
 .mainModule h2{
     width:100%;
@@ -102,11 +102,12 @@ a{
     height:125px;
 }
 .mainModule a{color:white;}
-.mainModule a:hover{opacity:0.5; font-size:20px;}
+.mainModule a:hover{opacity:0.5;}
 .moduleImg{
-    width:100px;
-    height:100px;
-    background-color:blue;
+    width:90px;
+    height:90px;
+    border:1px solid white;
+    margin:0 5px;
     padding:0 10px;
 }
 .mainModule p{
@@ -122,6 +123,15 @@ a{
     width:500px;
     height:250px;
     background-color:black;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+}
+.cup{
+    width:100px;
+    height:150px;
+    background-color:darkgray;
+    text-align:center;
 }
 .mainBottom{
     width:500px;

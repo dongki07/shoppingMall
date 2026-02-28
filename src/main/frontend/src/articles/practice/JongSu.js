@@ -6,8 +6,15 @@ import { Link } from "react-router-dom";
 function JongSu() {
     const [waterAble, setWaterAble] = useState(false);
     const [waterMode, setWaterMode] = useState(1);
-    const [water, setWater] = useState(0);
+    const [totalWater, setTotalWater] = useState(0);
     const [ice, setIce] = useState(0);
+    const [cupAble, setCupAble] = useState(false);
+
+    const [water, setWater] = useState([
+        {id: 1, name: "온수", qua: 0},
+        {id: 2, name: "정수", qua: 0},
+        {id: 3, name: "냉수", qua: 0}
+    ]);
 
     const switchTurn = () => {
         setWaterAble(!waterAble);
@@ -21,12 +28,23 @@ function JongSu() {
        setIce(prev => prev + 1);
     }
 
+    const switchCup = (e) => {
+        setCupAble(!cupAble);
+    }
+
     useEffect(() => {
         if(!waterAble) return;
 
+        if(!cupAble) {
+            alert("컵이 없는데요?");
+            setWaterAble(!waterAble);
+            return;
+        }
+
         const test = setInterval(() => {
             if(!waterAble) clearInterval(test);
-            setWater(prev => prev + 10);
+            setWater(data => data.map(data => data.id === waterMode ? {...data, qua: data.qua + 10} : data));
+            setTotalWater(prev => prev + 10);
         }, 100);
 
         return () => clearInterval(test);
@@ -60,24 +78,14 @@ function JongSu() {
                     <div className={style.mainModule}>
                         <h2>정ㅅㅜ기</h2>
                         <ul>
-                            <li>
-                                <a href="#" onClick={() => switchWater(1)}>
+                        {water.map(data => (
+                            <li key={data.id}>
+                                <a href="#" onClick={() => switchWater(data.id)}>
                                     <div className={style.moduleImg}>z</div>
-                                    <p>온</p>
+                                    <p>{data.name} ({data.qua}ml)</p>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" onClick={() => switchWater(2)}>
-                                    <div className={style.moduleImg}>z</div>
-                                    <p>정</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onClick={() => switchWater(3)}>
-                                    <div className={style.moduleImg}>z</div>
-                                    <p>냉</p>
-                                </a>
-                            </li>
+                        ))}
                         </ul>
                         <ul>
                             <li>
@@ -93,16 +101,21 @@ function JongSu() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" onClick={() => alert("잘 된다")}>
+                                <a href="#" onClick={switchCup}>
                                     <div className={style.moduleImg}>z</div>
-                                    <p>물!</p>
+                                    <p>컵</p>
                                 </a>
                             </li>
                         </ul>
                         <div className={style.moduleCheck} style={{backgroundColor: waterAble ? "green" : "red"}}>
-                        물 활성화: {waterAble ? "ON" : "OFF"}, 물: {water}ml, 얼음: {ice}g</div>
+                        물 활성화: {waterAble ? "ON" : "OFF"}</div>
                     </div>
-                    <div className={style.mainCenter}></div>
+                    <div className={style.mainCenter}>
+                        {cupAble && <div className={style.cup}>
+                            <h2>컵</h2>
+                            <p>물: {totalWater}ml <br/> 얼음: {ice}g</p>
+                        </div>}
+                    </div>
                     <div className={style.mainBottom}></div>
                 </div>
             </div>
